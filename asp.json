@@ -3,7 +3,7 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "enterpriseCode": {
-            "defaultValue": "po",
+            "defaultValue": "par",
             "type": "string"
         },
         "environmentCode": {
