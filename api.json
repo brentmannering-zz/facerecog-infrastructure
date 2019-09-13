@@ -1,0 +1,74 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "enterpriseCode": {
+            "defaultValue": "par",
+            "type": "string"
+        },
+        "environmentCode": {
+            "defaultValue": "ci",
+            "type": "string"
+        },
+        "locationCode": {
+            "defaultValue": "sea",
+            "type": "string"
+        },
+        "aspLocationCode": {
+            "defaultValue": "sea",
+            "type": "string"
+        },
+        "storageLocationCode": {
+            "defaultValue": "sea",
+            "type": "string"
+        },
+        "insightsLocationCode": {
+            "defaultValue": "sea",
+            "type": "string"
+        },
+        "resourcelocation": {
+            "defaultValue": "[resourceGroup().location]",
+            "type": "string"
+        },
+        "contextCode": {
+            "type": "string"
+        }
+    },
+    "variables": {
+        "webAppName": "[concat(parameters('enterpriseCode'), '-', parameters('environmentCode'), '-', parameters('locationCode'), '-api-', parameters('contextCode'))]",
+        "aspName": "[concat(parameters('enterpriseCode'), '-', parameters('environmentCode'), '-', parameters('aspLocationCode'), '-asp-', parameters('contextCode'))]",
+        "storageName": "[concat(parameters('enterpriseCode'), parameters('environmentCode'), parameters('storageLocationCode'), 'str', parameters('contextCode'))]",
+        "storageAccountid": "[concat(resourceGroup().id,'/providers/','Microsoft.Storage/storageAccounts/', variables('storageName'))]",
+        "insightsName": "[concat(parameters('enterpriseCode'), '-', parameters('environmentCode'), '-', parameters('insightsLocationCode'), '-ins-', parameters('contextCode'))]"
+    },
+    "resources": [
+        {
+            "apiVersion": "2015-08-01",
+            "type": "Microsoft.Web/sites",
+            "name": "[variables('webAppName')]",
+            "location": "[parameters('resourceLocation')]",
+            "dependsOn": [],
+            "properties": {
+                "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('aspName'))]",
+                "siteConfig": {
+                    "appSettings": [
+                        {
+                            "name": "APPINSIGHTS_INSTRUMENTATIONKEY",
+                            "value": "[reference(resourceId('Microsoft.Insights/components', variables('insightsName')), '2014-04-01').InstrumentationKey]"
+                        }
+                    ]
+                }
+            }
+        }
+    ],
+    "outputs": {
+        "webAppName": {
+            "value": "[variables('webAppName')]",
+            "type": "string"
+        },
+        "storageName": {
+            "value": "[variables('storageName')]",
+            "type": "string"
+        }
+    }
+}
