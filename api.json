@@ -55,7 +55,16 @@
                         {
                             "name": "APPINSIGHTS_INSTRUMENTATIONKEY",
                             "value": "[reference(resourceId('Microsoft.Insights/components', variables('insightsName')), '2014-04-01').InstrumentationKey]"
+                        },
+                        {
+                            "name": "AppSettings:Container",
+                            "value": "images"
+                        },
+                        {
+                            "name": "AppSettings:StorageConnection",
+                            "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageName'), ';AccountKey=', listKeys(variables('storageAccountid'),'2015-05-01-preview').key1)]"
                         }
+
                     ]
                 }
             }
