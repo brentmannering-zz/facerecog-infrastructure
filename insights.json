@@ -11,7 +11,7 @@
             "type": "string"
         },
         "locationCode": {
-            "defaultValue": "auea",
+            "defaultValue": "sea",
             "type": "string"
         },
         "resourcelocation": {
