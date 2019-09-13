@@ -6,10 +6,13 @@
             "value": "pr"
         },
         "locationCode": {
-            "value": "auea"
+            "value": "sea"
         },
-        "resourcelocation": {
-            "value": "Australia east"
+        "aspLocationCode": {
+            "value": "sea"
+        },
+        "storageLocationCode": {
+            "value": "sea"
         },
         "contextCode": {
             "value": "fr"

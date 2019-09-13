@@ -3,19 +3,16 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "environmentCode": {
-            "value": "pr"
+            "value": "ci"
         },
         "locationCode": {
-            "value": "auea"
+            "value": "sea"
         },
         "aspLocationCode": {
-            "value": "auea"
+            "value": "sea"
         },
         "storageLocationCode": {
-            "value": "auea"
-        },
-        "insightsLocationCode": {
-            "value": "auea"
+            "value": "sea"
         },
         "contextCode": {
             "value": "fr"

@@ -3,13 +3,13 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "environmentCode": {
-            "value": "ci"
+            "value": "pr"
         },
         "locationCode": {
-            "value": "auea"
+            "value": "sea"
         },
         "resourcelocation": {
-            "value": "Australia east"
+            "value": "Southeast Asia"
         },
         "contextCode": {
             "value": "fr"
