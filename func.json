@@ -32,9 +32,6 @@
         },
         "contextCode": {
             "type": "string"
-        },
-        "RaygunApiKey": {
-            "type": "string"
         }
     },
     "variables": {
