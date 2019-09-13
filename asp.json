@@ -15,7 +15,7 @@
             "type": "string"
         },
         "locationCode": {
-            "defaultValue": "auea",
+            "defaultValue": "sea",
             "type": "string"
         },
         "ContextCode": {
@@ -29,7 +29,8 @@
                 "S1",
                 "S2",
                 "S3",
-                "Y1"
+                "Y1",
+                "B1"
             ]
         }
     },

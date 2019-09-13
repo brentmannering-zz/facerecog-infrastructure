@@ -11,19 +11,19 @@
             "type": "string"
         },
         "locationCode": {
-            "defaultValue": "auea",
+            "defaultValue": "sea",
             "type": "string"
         },
         "aspLocationCode": {
-            "defaultValue": "auea",
+            "defaultValue": "sea",
             "type": "string"
         },
         "storageLocationCode": {
-            "defaultValue": "auea",
+            "defaultValue": "sea",
             "type": "string"
         },
         "insightsLocationCode": {
-            "defaultValue": "auea",
+            "defaultValue": "sea",
             "type": "string"
         },
         "resourcelocation": {
@@ -31,9 +31,6 @@
             "type": "string"
         },
         "contextCode": {
-            "type": "string"
-        },
-        "RaygunApiKey": {
             "type": "string"
         }
     },
