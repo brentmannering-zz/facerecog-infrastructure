@@ -1,0 +1,51 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "enterpriseCode": {
+            "defaultValue": "po",
+            "type": "string"
+        },
+        "environmentCode": {
+            "defaultValue": "ci",
+            "type": "string"
+        },
+        "locationCode": {
+            "defaultValue": "auea",
+            "type": "string"
+        },
+        "resourcelocation": {
+            "defaultValue": "[resourceGroup().location]",
+            "type": "string"
+        },
+        "contextCode": {
+            "type": "string"
+        },
+        "storageAccountType": {
+            "type": "string",
+            "defaultValue": "Standard_LRS"
+        }
+    },
+    "variables": {
+        "storageName": "[concat(parameters('enterpriseCode'), parameters('environmentCode'), parameters('locationCode'), 'str', parameters('contextCode'))]"
+    },
+    "resources": [
+        {
+            "type": "Microsoft.Storage/storageAccounts",
+            "name": "[variables('storageName')]",
+            "location": "[parameters('resourceLocation')]",
+            "apiVersion": "2018-07-01",
+            "sku": {
+                "name": "[parameters('storageAccountType')]"
+            },
+            "kind": "StorageV2",
+            "properties": {}
+        }
+    ],
+    "outputs": {
+        "storageName": {
+            "value": "[variables('storageName')]",
+            "type": "string"
+        }
+    }
+}

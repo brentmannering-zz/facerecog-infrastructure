@@ -1,0 +1,60 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "enterpriseCode": {
+            "defaultValue": "po",
+            "type": "string"
+        },
+        "environmentCode": {
+            "defaultValue": "ci",
+            "type": "string"
+        },
+        "resourceLocation": {
+            "defaultValue": "[resourceGroup().location]",
+            "type": "string"
+        },
+        "locationCode": {
+            "defaultValue": "auea",
+            "type": "string"
+        },
+        "ContextCode": {
+            "defaultValue": "fr",
+            "type": "string"
+        },
+        "aspSkuName": {
+            "defaultValue": "s1",
+            "type": "string",
+            "AllowedValues":[
+                "S1",
+                "S2",
+                "S3",
+                "Y1"
+            ]
+        }
+    },
+    "variables": {
+        "aspName": "[concat(parameters('enterpriseCode'), '-', parameters('environmentCode'), '-', parameters('locationCode'), '-asp-', parameters('contextCode'))]"
+    },
+    "resources": [
+        {
+            "type": "Microsoft.Web/serverfarms",
+            "apiVersion": "2018-02-01",
+            "name": "[variables('aspName')]",
+            "location": "[parameters('resourceLocation')]",
+            "sku": {
+                "name": "[parameters('aspSkuName')]"
+            },
+            "kind": "app",
+            "properties": {
+                "name": "[variables('aspName')]"
+            }
+        }
+    ],
+    "outputs": {
+        "aspName": {
+            "value": "[variables('aspName')]",
+            "type": "string"
+        }
+    }
+}

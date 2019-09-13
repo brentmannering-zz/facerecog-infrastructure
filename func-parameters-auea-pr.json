@@ -1,0 +1,24 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "environmentCode": {
+            "value": "pr"
+        },
+        "locationCode": {
+            "value": "auea"
+        },
+        "aspLocationCode": {
+            "value": "auea"
+        },
+        "storageLocationCode": {
+            "value": "auea"
+        },
+        "insightsLocationCode": {
+            "value": "auea"
+        },
+        "contextCode": {
+            "value": "fr"
+        }
+    }
+}

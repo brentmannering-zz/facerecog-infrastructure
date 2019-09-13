@@ -1,0 +1,46 @@
+{
+    "$schema": "http://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "enterpriseCode": {
+            "defaultValue": "po",
+            "type": "string"
+        },
+        "environmentCode": {
+            "defaultValue": "ci",
+            "type": "string"
+        },
+        "locationCode": {
+            "defaultValue": "auea",
+            "type": "string"
+        },
+        "resourcelocation": {
+            "defaultValue": "[resourceGroup().location]",
+            "type": "string"
+        },
+        "contextCode": {
+            "type": "string"
+        }
+    },
+    "variables": {
+        "insightsName": "[concat(parameters('enterpriseCode'), '-', parameters('environmentCode'), '-', parameters('locationCode'), '-ins-', parameters('contextCode'))]"
+    },
+    "resources": [
+        {
+            "apiVersion": "2015-05-01",
+            "name": "[variables('insightsName')]",
+            "type": "Microsoft.Insights/components",
+            "location": "[parameters('resourceLocation')]",
+            "kind": "web",
+            "properties": {
+                "Application_Type": "web"
+            }
+        }
+    ],
+    "outputs": {
+        "insightsName": {
+            "value": "[variables('insightsName')]",
+            "type": "string"
+        }
+    }
+}
