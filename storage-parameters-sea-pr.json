@@ -10,6 +10,12 @@
         },
         "contextCode": {
             "value": "fr"
+        },
+        "imageContainerName":{
+            "value": "images"
+        },
+        "thumbnailContainerName":{
+            "value": "thumbnail"
         }
     }
 }

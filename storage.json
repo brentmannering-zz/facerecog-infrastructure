@@ -24,6 +24,12 @@
         "storageAccountType": {
             "type": "string",
             "defaultValue": "Standard_LRS"
+        },
+        "imageContainerName":{
+            "type": "string"
+        },
+        "thumbnailContainerName":{
+            "type": "string"
         }
     },
     "variables": {
@@ -39,7 +45,31 @@
                 "name": "[parameters('storageAccountType')]"
             },
             "kind": "StorageV2",
-            "properties": {}
+            "properties": {},
+            "resources": [
+                {
+                    "name": "[concat('default/', parameters('imageContainerName'))]",
+                    "type": "blobServices/containers",
+                    "apiVersion": "2018-07-01",
+                    "dependsOn": [
+                        "[variables('storageName')]"
+                    ],
+                    "properties": {
+                        "publicAccess": "Container"
+                    }
+                },
+                {
+                    "name": "[concat('default/', parameters('thumbnailContainerName'))]",
+                    "type": "blobServices/containers",
+                    "apiVersion": "2018-07-01",
+                    "dependsOn": [
+                        "[variables('storageName')]"
+                    ],
+                    "properties": {
+                        "publicAccess": "Container"
+                    }
+                }
+            ]
         }
     ],
     "outputs": {
