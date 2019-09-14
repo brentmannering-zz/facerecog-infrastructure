@@ -93,7 +93,13 @@
                             "name": "faceApiKey",
                             "value": "3b273520cd574437b989e96548583580"
                         }
-                    ]
+                    ],
+                    "cors": {
+                        "allowedOrigins": [
+                            "[concat('https://', parameters('enterpriseCode'), '-', parameters('environmentCode'), '-', parameters('locationCode'), '-aglr-', parameters('contextCode'), '.azurewebsites.net')]",
+                            "http://localhost:4200"
+                        ]
+                    }
                 }
             }
         }
